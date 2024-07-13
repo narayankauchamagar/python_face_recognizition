@@ -53,8 +53,14 @@ def generate_user_data_and_train_data():
     while x < count:
         user_name = input("User's Name: ")
         user_id = int(input("Enter user id"))
+        if user_id <= 0:
+            print("User id not acceptable, using 1 as id ")
+            user_id = 1
         if _USER_MAP.keys().__contains__(user_id):
             print("User id already taken: over-riding data")
+        if user_name == "":
+            print("User name is empty")
+            user_name = "user" + str(user_id)
         _USER_MAP[user_id] = user_name
         generate_dataset(user_id)
         x += 1
