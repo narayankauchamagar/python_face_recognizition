@@ -38,8 +38,8 @@ def read_user_record_from_file():
         with open(_USER_RECORD_FILE) as f:
             data = f.read()
 
-        print("Data type before reconstruction : ", type(data))
         # reconstructing the data as a dictionary
+        print("Existing User Data:", data)
         return json.loads(data)
     else:
         return {}
@@ -164,14 +164,13 @@ if __name__ == '__main__':
                 x = features[0, 0]
                 y = features[0, 1]
                 cv2.putText(image, _USER_MAP.get(str(user_id)), (x, y - 5), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1)
-                cv2.imshow('Face Cropper', image)
-
+                cv2.imshow('View Window', image)
             else:
                 cv2.putText(image, "Unknown", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
-                cv2.imshow('Face Cropper', image)
+                cv2.imshow('View Window', image)
         except:
             cv2.putText(image, "Face Not Found", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2)
-            cv2.imshow('Face Cropper', image)
+            cv2.imshow('View Window', image)
             pass
         if cv2.waitKey(1) == 13 or cv2.waitKey(1) == 27:
             break
